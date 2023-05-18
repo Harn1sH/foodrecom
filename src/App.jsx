@@ -1,13 +1,15 @@
-import { useState } from 'react'
+/* eslint-disable no-unused-vars */
+import { useState } from "react";
 import "../src/index.css";
+import Comp1 from "./components/comp1";
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <>
-     <h1 className='text-lg tracking-widest text-blue-200'> food recommedation</h1>
+      <h1 className="text-lg tracking-widest text-blue-200">
+        <Comp1 />
+      </h1>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
