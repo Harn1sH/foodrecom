@@ -1,5 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from "react";
+import Card from "./Card";
+import { Button, TextField } from "@mui/material";
 
 const Comp1 = () => {
   const [recipes, setRecipes] = useState([]);
@@ -27,38 +29,43 @@ const Comp1 = () => {
   };
 
   return (
-    <div className="text-4xl font-semibold  text-black h-screen w-screen">
-      <div className="justify-center w-full flex  items-center mt-7 space-x-4 ">
-        <input
-          type="text"
-          name="se"
-          id="se"
-          className="border-2 border-black px-2 py-1"
-          value={search}
-          onChange={(e) => {
-            setSearch(e.target.value);
-          }}
-        />
-        <button
-          className="bg-gradient-to-r from-blue-700 to-blue-400 rounded-lg items-center text-xl px-2 font-normal"
-          onClick={() => {
-            setQuery(search);
-          }}
-        >
-          search
-        </button>
+    <div className="text-4xl font-semibold  text-black h-screen w-screen overflow-x-hidden">
+      <div className="justify-center w-full flex  items-center  space-x-4 ">
+        <div className="w-full flex justify-center gap-x-3 shadow-xl items-center ">
+          <TextField
+            label="Ingredients"
+            className="w-96 my-4"
+            variant="outlined"
+            value={search}
+            onChange={(e) => {
+              setSearch(e.target.value);
+            }}
+          />
+
+          <Button
+            variant="contained"
+            disableElevation
+            className="font-mono"
+            onClick={() => {
+              setQuery(search);
+            }}
+          >
+            search
+          </Button>
+        </div>
       </div>
-      <div className=" w-full flex justify-center items-center font-normal text-base">
-        <div className="grid grid-cols-4 space-x-4 mt-10  mx-4 space-y-6">
+      <div className=" w-full flex justify-center items-center font-normal text-base mt-7 mb-6">
+        <div className="grid grid-cols-4 gap-x-4 gap-y-4">
           {recipes.map((recipe) => {
             return (
-              <div
-                key={recipe.recipe.label}
-                className="h-full w-full shadow-lg m-5"
-              >
-                <img src={recipe.recipe.image} alt="" />
-                {recipe.recipe.label}
-              </div>
+              // <div
+              //   key={recipe.recipe.label}
+              //   className="h-full w-full shadow-lg m-5"
+              // >
+              //   <img src={recipe.recipe.image} alt="" />
+              //   {recipe.recipe.label}
+              // </div>
+              <Card key={recipe.recipe.label} recipe={recipe.recipe} />
             );
           })}
         </div>
